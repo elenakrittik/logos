@@ -223,6 +223,7 @@ where
 /// Iterator that pairs tokens with their position in the source.
 ///
 /// Look at [`Lexer::spanned`](./struct.Lexer.html#method.spanned) for documentation.
+#[derive(Debug)]
 pub struct SpannedIter<'source, Token: Logos<'source>> {
     lexer: Lexer<'source, Token>,
 }

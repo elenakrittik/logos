@@ -2,7 +2,7 @@ use logos::{Lexer, Logos as _};
 use logos_derive::Logos;
 use tests::assert_lex;
 
-#[derive(Default)]
+#[derive(Debug, Default)]
 struct MockExtras {
     spaces: usize,
     line_breaks: usize,

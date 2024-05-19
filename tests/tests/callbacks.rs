@@ -38,6 +38,7 @@ mod data {
         Float(f64),
     }
 
+    #[allow(clippy::approx_constant)] // false positive
     #[test]
     fn numbers() {
         let tokens: Vec<_> = Token::lexer("Hello 1 42 -100 pi 3.14 -77.77").collect();

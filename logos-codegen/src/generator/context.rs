@@ -26,9 +26,8 @@ pub struct Context {
 }
 
 impl Context {
-    pub fn switch(&mut self, miss: Option<NodeId>) -> Option<TokenStream> {
-        self.backtrack = Some(miss?);
-        None
+    pub fn switch(&mut self, miss: Option<NodeId>) {
+        self.backtrack = miss;
     }
 
     pub const fn advance(self, n: usize) -> Self {

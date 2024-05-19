@@ -44,12 +44,12 @@ pub use crate::source::Source;
 pub trait Logos<'source>: Sized {
     /// Associated type `Extras` for the particular lexer. This can be set using
     /// `#[logos(extras = MyExtras)]` and accessed inside callbacks.
-    type Extras;
+    type Extras: Debug;
 
     /// Source type this token can be lexed from. This will default to `str`,
     /// unless one of the defined patterns explicitly uses non-unicode byte values
     /// or byte slices, in which case that implementation will use `[u8]`.
-    type Source: Source + ?Sized + 'source;
+    type Source: Source + ?Sized + Debug + 'source;
 
     /// Error type returned by the lexer. This can be set using
     /// `#[logos(error = MyError)]`. Defaults to `()` if not set.
