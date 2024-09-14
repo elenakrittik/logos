@@ -223,9 +223,19 @@ where
 /// Iterator that pairs tokens with their position in the source.
 ///
 /// Look at [`Lexer::spanned`](./struct.Lexer.html#method.spanned) for documentation.
-#[derive(Debug)]
 pub struct SpannedIter<'source, Token: Logos<'source>> {
     lexer: Lexer<'source, Token>,
+}
+
+impl<'source, Token: Logos<'source>> Debug for SpannedIter<'source, Token>
+where
+    Token::Extras: Debug,
+{
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        f.debug_struct("SpannedIter")
+            .field("lexer", &self.lexer)
+            .finish()
+    }
 }
 
 // deriving Clone doesn't infer the necessary `Token::Extras: Clone` bound

@@ -44,7 +44,7 @@ pub use crate::source::Source;
 pub trait Logos<'source>: Sized {
     /// Associated type `Extras` for the particular lexer. This can be set using
     /// `#[logos(extras = MyExtras)]` and accessed inside callbacks.
-    type Extras: Debug;
+    type Extras;
 
     /// Source type this token can be lexed from. This will default to `str`,
     /// unless one of the defined patterns explicitly uses non-unicode byte values
