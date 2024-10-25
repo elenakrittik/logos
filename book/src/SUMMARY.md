@@ -10,6 +10,8 @@
 + [Using `Extras`](./extras.md)
 + [Using callbacks](./callbacks.md)
 + [Common regular expressions](./common-regex.md)
++ [Debugging](./debugging.md)
++ [Unsafe Code](./unsafe.md)
 + [Examples](./examples.md)
   + [Brainfuck interpreter](./examples/brainfuck.md)
   + [JSON parser](./examples/json.md)
@@ -17,3 +19,4 @@
 + [Contributing](./contributing.md)
   + [Setup](./contributing/setup.md)
   + [Internals](./contributing/internals.md)
+  + [Fuzzing](./contributing/fuzzing.md)

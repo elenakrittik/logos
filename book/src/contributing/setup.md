@@ -30,7 +30,7 @@ Finally, launch a terminal (i.e., command-line) session and go to the
 A good way to see if you code can compile is to use the eponym command:
 
 ```bash
-cargo check --worspace
+cargo check --workspace
 ```
 
 ## Formatting and linting your code
@@ -81,7 +81,7 @@ configuration to the one used by [docs.rs](https://docs.rs/logos/latest/logos/):
 
 ```bash
 RUSTDOCFLAGS="--cfg docsrs" cargo +nightly doc \
-    --all-features \
+    --features debug \
     -Zunstable-options \
     -Zrustdoc-scrape-examples \
     --no-deps \

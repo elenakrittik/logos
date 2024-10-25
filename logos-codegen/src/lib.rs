@@ -10,9 +10,15 @@
 
 mod error;
 mod generator;
+#[cfg(not(feature = "fuzzing"))]
 mod graph;
+#[cfg(feature = "fuzzing")]
+pub mod graph;
 mod leaf;
+#[cfg(not(feature = "fuzzing"))]
 mod mir;
+#[cfg(feature = "fuzzing")]
+pub mod mir;
 mod parser;
 mod util;
 
@@ -295,7 +301,7 @@ pub fn generate(input: TokenStream) -> TokenStream {
 
     graph.shake(root);
 
-    debug!("Generating code from graph: {graph:#?}");
+    debug!("Generating code from graph:\n{graph:#?}");
 
     let generator = Generator::new(name, &this, root, &graph);
 

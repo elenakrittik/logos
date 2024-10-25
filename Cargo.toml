@@ -1,5 +1,5 @@
 [workspace]
-members = ["logos-cli", "logos-codegen", "logos-derive", "tests"]
+members = ["logos-cli", "logos-codegen", "logos-derive", "tests", "fuzz"]
 resolver = "2"
 
 [workspace.package]
@@ -12,8 +12,8 @@ keywords = ["lexer", "lexical", "tokenizer", "parser", "no_std"]
 license = "MIT OR Apache-2.0"
 readme = "README.md"
 repository = "https://github.com/maciejhirsz/logos"
-rust-version = "1.65.0"
-version = "0.14.0"
+rust-version = "1.70.0"
+version = "0.14.2"
 
 [package]
 name = "logos"
@@ -30,7 +30,7 @@ rust-version.workspace = true
 version.workspace = true
 
 [package.metadata]
-msrv = "1.65.0"  # Needed to duplicate, because cargo-msrv does not support workspace
+msrv = "1.70.0"  # Needed to duplicate, because cargo-msrv does not support workspace
 
 [package.metadata.release]
 pre-release-replacements = [
@@ -51,9 +51,11 @@ default = ["export_derive", "std"]
 export_derive = ["logos-derive"]
 # Should the crate use the standard library?
 std = []
+# Use safe alternatives for unsafe code (may impact performance)?
+forbid_unsafe = ["logos-derive?/forbid_unsafe"]
 
 [package.metadata.docs.rs]
-all-features = true
+features = ["debug"]
 cargo-args = ["-Zunstable-options", "-Zrustdoc-scrape-examples"]
 rustdoc-args = ["--cfg", "docsrs"]
 
@@ -62,10 +64,10 @@ bench = {lto = true}
 release = {lto = true}
 
 [dependencies]
-logos-derive = {version = "0.14.0", path = "./logos-derive", optional = true}
+logos-derive = {version = "0.14.2", path = "./logos-derive", optional = true}
 
 [dev-dependencies]
-ariadne = {version = "0.2.0", features = ["auto-color"]}
+ariadne = {version = "0.4", features = ["auto-color"]}
 
 [[example]]
 doc-scrape-examples = true  # Only needed once, because requires dev-dependencies

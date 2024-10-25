@@ -1,18 +1,5 @@
-[dependencies]
-logos-codegen = {version = "0.14.2", path = "../logos-codegen"}
-
-[features]
-# Enables debug messages
-debug = ["logos-codegen/debug"]
-# Don't use or generate unsafe code
-forbid_unsafe = ["logos-codegen/forbid_unsafe"]
-
-[lib]
-bench = false
-proc-macro = true
-
 [package]
-name = "logos-derive"
+name = "logos-fuzz"
 authors.workspace = true
 categories.workspace = true
 description.workspace = true
@@ -24,6 +11,12 @@ readme.workspace = true
 repository.workspace = true
 rust-version.workspace = true
 version.workspace = true
+publish = false
+
+[dependencies]
+afl = "0.15"
+arbitrary = "1.3"
+logos-codegen = { path = "../logos-codegen", features = ["fuzzing"] }
 
 [package.metadata.release]
 shared-version = true
